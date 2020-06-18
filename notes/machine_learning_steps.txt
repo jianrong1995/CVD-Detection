@@ -1,0 +1,45 @@
+1. Load data							
+	1a) read data from file, 				(read_csv())
+	1bi) if unsupervised					(clustering)
+	1bii) if supervised problem				(classification or regression)
+
+2. Summarise data
+	2a) Look at dimension of dataset 			(.shape)
+	2b) Look at the first few rows				(.head())
+	2c) Statistical summary of the rows			(.describe())
+	
+3. Data visualisation
+	3a) univariate plot for each (box and whiskers plot)	(seaborn boxplot)
+	3b) histogram plot for each				(seaborn distplot)
+	3c) Multivariate plot 					(seaborn PairGrid, pairplot)
+	3d) Correlation plot					(seaborn corr, heatmap)
+	3e) Look at the class distribution (classification)	(.groupby('y').size())
+	3f) Fix class imbalance problems if needed		(SMOTE)
+
+4. Data cleaning, feature transformation and feature engineering
+	4a) Fixing missing and default value data		(dropping or imputation)
+	4b) Type conversion					(datetime or timestamp or datetime64 or epoch time)
+	4c) Categorical data					(integer encoding for ordinal; get_dummies(drop_first=True) for nominal)
+	4d) Continuous data: transformation			(if data is skewed: squareroot, log, reciprocal, box cox)
+	4e) Numerical data: Standardisation or normalisation	(StandardScaler() if normally distributed 
+								MinMaxScaler() if not Gaussian 
+								RobustScaler() if outliers present
+								QuantileTransformer() if uniform/normal distribution)
+
+5. Create train and test set
+	5a) divide dataset into training and testing		(train_test_split)
+
+6. Model selection
+	6a)Selecting the right model				(Clustering: KMeans(), AgglomerativeClustering(), DBSCAN()
+								Classification: LogisticRegression(), RandomForestClassifier(), 
+									SVC(), KNeighborsClassifier(), SGDClassifier()
+									AdaBoostClassifier(), GradientBoostingClassifier()
+								Regression: RandomForestRegressor(), LinearRegression()),
+									SGDRegressor(), Ridge()
+									AdaBoostClassifier(), GradientBoostingClassifier())
+
+7. Model selection and evaluation
+	7a) Scoring 						(Classification: ROC_AUC, f1, precision, recall, accuracy, log_loss
+								Clustering: homogeneity_score, completeness_score, v_measure_score
+								Regression: explained_variance, f2, RMSE, MAE)
+	7b) GridSearchCV					GridSearchCV(estimator, param_grid, scoring)
