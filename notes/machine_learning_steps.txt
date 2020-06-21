@@ -20,11 +20,13 @@
 	4a) Fixing missing and default value data		(dropping or imputation)
 	4b) Type conversion					(datetime or timestamp or datetime64 or epoch time)
 	4c) Categorical data					(integer encoding for ordinal; get_dummies(drop_first=True) for nominal)
-	4d) Continuous data: transformation			(if data is skewed: squareroot, log, reciprocal, box cox)
-	4e) Numerical data: Standardisation or normalisation	(StandardScaler() if normally distributed 
-								MinMaxScaler() if not Gaussian 
-								RobustScaler() if outliers present
-								QuantileTransformer() if uniform/normal distribution)
+	4d) Continuous data: transformation			(Do only if data is skewed and algorithm assumes Gaussian distribution
+									squareroot, log, reciprocal, box cox)
+	4e) Numerical data: Standardisation or normalisation	(Do only if data have different units 
+									StandardScaler() if normally distributed 
+									MinMaxScaler() if not Gaussian 
+									RobustScaler() if outliers present
+									QuantileTransformer() if uniform/normal distribution)
 
 5. Create train and test set
 	5a) divide dataset into training and testing		(train_test_split)

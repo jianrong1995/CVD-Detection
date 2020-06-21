@@ -9,6 +9,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.metrics import roc_curve, auc
+from scipy.stats import shapiro
 
 def plotROC(groundTruth, prediction):
     fpr, tpr, threshold = metrics.roc_curve(groundTruth, prediction)
@@ -69,3 +70,11 @@ def executePCA(components, train):
         return pca_train
     except Exception:
         print("Number of components is not correct!")
+
+def normalityShapiroWilk(data, alpha = 0.05):
+    stat, pvalue = shapiro(data)
+    print('Statistics=%.3f, p=%.3f' % (stat, pvalue))
+    if pvalue > alpha:
+        print('Data looks Gaussian (fail to reject H0)')
+    else:
+        print('Data does not look Gaussian (reject H0)')    
